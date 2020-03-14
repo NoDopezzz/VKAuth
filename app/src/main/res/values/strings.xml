@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">VKAuth</string>
+
+    <string name="authorize">Авторизироваться</string>
+
+    <string name="error">Ошибка</string>
+    <string name="quit">Выйти</string>
+</resources>
