@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import nodopezzz.android.vkauthorization.VK.VKAuth;
@@ -43,16 +44,39 @@ public class AuthFragment extends Fragment {
         buttonAuth = v.findViewById(R.id.button_auth);
 
         local = new VKAuthLocal(getActivity());
-
         buttonAuth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Открытие активности для обработки авторизации
-                VKAuth.startAuthorizationActivity(getActivity(), "friends");
+                createAuthWebViewFragment();
             }
         });
 
         return v;
+    }
+
+    private void createAuthWebViewFragment(){
+        String url = VKAuth.createAuthorizationUrl( "friends");
+        WebViewFragment fragment = WebViewFragment.newInstance(url);
+        fragment.setOnSuccessAuthListener(new WebViewFragment.OnSuccessAuthListener() {
+            @Override
+            public void onSuccessAuth(String url) {
+
+                String token = VKAuth.getAccessToken(url);
+                String userId = VKAuth.getUserId(url);
+
+                if(token != null && userId != null){
+                    local.saveToken(token);
+                    local.saveUserId(userId);
+                    onAuthSuccessListener.onAuthSuccess(userId, token);
+                }
+
+            }
+        });
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_main,fragment)
+                .commit();
     }
 
     @Override
@@ -60,19 +84,7 @@ public class AuthFragment extends Fragment {
         super.onResume();
 
         //Обработка данных, которые вернулись после перехвата активности с ответом
-        String token = VKAuth.getAccessToken(getActivity().getIntent().getData());
-        String userId = VKAuth.getUserId(getActivity().getIntent().getData());
 
-        //Обнуление data для того, чтобы не было повторного запуска onAuthSuccess при ошибке
-        getActivity().getIntent().setData(null);
-
-        Log.i(TAG, userId + ": " + token);
-
-        if(token != null && userId != null){
-            local.saveToken(token);
-            local.saveUserId(userId);
-            onAuthSuccessListener.onAuthSuccess(userId, token);
-        }
     }
 
 }
