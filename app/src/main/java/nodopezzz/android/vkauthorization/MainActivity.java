@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import nodopezzz.android.vkauthorization.VK.VKAuth;
 import nodopezzz.android.vkauthorization.VK.VKAuthLocal;
 
 public class MainActivity extends AppCompatActivity {
@@ -43,14 +44,37 @@ public class MainActivity extends AppCompatActivity {
 
     private void createAuthFragment(){
         AuthFragment fragment = AuthFragment.newInstance();
-        fragment.setOnAuthSuccessListener(new AuthFragment.OnAuthSuccessListener() {
+        fragment.setOnAuthButtonClickListener(new AuthFragment.OnAuthButtonClickListener() {
             @Override
-            public void onAuthSuccess(String userId, String token) {
-                //обработка успешной авторизации
-                createMainFragment(userId, token);
+            public void onAuthButtonClick() {
+                createAuthWebViewFragment();
             }
         });
         createFragment(fragment);
+    }
+
+    private void createAuthWebViewFragment(){
+        String url = VKAuth.createAuthorizationUrl( "friends");
+        WebViewFragment fragment = WebViewFragment.newInstance(url);
+        fragment.setOnSuccessAuthListener(new WebViewFragment.OnSuccessAuthListener() {
+            @Override
+            public void onSuccessAuth(String url) {
+
+                String token = VKAuth.getAccessToken(url);
+                String userId = VKAuth.getUserId(url);
+
+                if(token != null && userId != null){
+                    local.saveToken(token);
+                    local.saveUserId(userId);
+                    createMainFragment(userId, token);
+                }
+
+            }
+        });
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_main,fragment)
+                .commit();
     }
 
     private void createMainFragment(String userId, String token){
@@ -59,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailed() {
                 //Обработка ошибки (направильный токен, устек срок годности и т.д.)
-
                 showFailSnackbar();
                 local.deleteToken();
                 local.deleteUserId();

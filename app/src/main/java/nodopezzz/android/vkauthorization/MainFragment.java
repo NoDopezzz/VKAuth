@@ -1,5 +1,7 @@
 package nodopezzz.android.vkauthorization;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -183,9 +185,20 @@ public class MainFragment extends Fragment {
         quitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(onQuitListener != null){
-                    onQuitListener.onQuit();
-                }
+                new AlertDialog.Builder(getActivity())
+                        .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if(onQuitListener != null){
+                                    onQuitListener.onQuit();
+                                }
+                            }
+                        })
+                        .setNegativeButton(R.string.no, null)
+                        .setMessage(R.string.quit_question)
+                        .setTitle(R.string.quit)
+                        .create().show();
+
             }
         });
     }

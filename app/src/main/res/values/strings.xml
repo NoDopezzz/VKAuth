@@ -5,4 +5,8 @@
 
     <string name="error">Ошибка</string>
     <string name="quit">Выйти</string>
+
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="quit_question">Вы уверены?</string>
 </resources>
