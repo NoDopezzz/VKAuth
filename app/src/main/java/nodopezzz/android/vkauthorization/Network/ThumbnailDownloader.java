@@ -1,6 +1,5 @@
-package nodopezzz.android.vkauthorization;
+package nodopezzz.android.vkauthorization.Network;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -13,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import nodopezzz.android.vkauthorization.Network.BitmapDownloader;
 
 public class ThumbnailDownloader extends HandlerThread {
 

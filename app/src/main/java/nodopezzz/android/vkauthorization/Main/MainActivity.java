@@ -1,19 +1,15 @@
-package nodopezzz.android.vkauthorization;
+package nodopezzz.android.vkauthorization.Main;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import nodopezzz.android.vkauthorization.R;
+import nodopezzz.android.vkauthorization.VK.Auth.AuthFragment;
+import nodopezzz.android.vkauthorization.VK.Auth.WebViewFragment;
 import nodopezzz.android.vkauthorization.VK.VKAuth;
 import nodopezzz.android.vkauthorization.VK.VKAuthLocal;
 

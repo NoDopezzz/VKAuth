@@ -1,7 +1,6 @@
-package nodopezzz.android.vkauthorization;
+package nodopezzz.android.vkauthorization.VK.Auth;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +8,9 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import nodopezzz.android.vkauthorization.VK.VKAuth;
+import nodopezzz.android.vkauthorization.R;
 import nodopezzz.android.vkauthorization.VK.VKAuthLocal;
 
 public class AuthFragment extends Fragment {

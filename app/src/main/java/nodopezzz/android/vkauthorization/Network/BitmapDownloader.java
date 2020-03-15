@@ -1,4 +1,4 @@
-package nodopezzz.android.vkauthorization;
+package nodopezzz.android.vkauthorization.Network;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

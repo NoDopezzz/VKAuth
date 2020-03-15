@@ -1,4 +1,4 @@
-package nodopezzz.android.vkauthorization;
+package nodopezzz.android.vkauthorization.VK.Auth;
 
 import android.app.Activity;
 import android.content.Context;

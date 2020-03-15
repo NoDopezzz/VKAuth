@@ -1,7 +1,5 @@
-package nodopezzz.android.vkauthorization;
+package nodopezzz.android.vkauthorization.VK.Auth;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +8,9 @@ import android.webkit.WebView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
+import nodopezzz.android.vkauthorization.R;
 
 public class WebViewFragment extends Fragment {
 

@@ -1,11 +1,10 @@
-package nodopezzz.android.vkauthorization;
+package nodopezzz.android.vkauthorization.Main;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +23,9 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 import nodopezzz.android.vkauthorization.Models.ResponseUsers;
 import nodopezzz.android.vkauthorization.Models.UsersContainer;
+import nodopezzz.android.vkauthorization.Network.BitmapDownloader;
+import nodopezzz.android.vkauthorization.R;
+import nodopezzz.android.vkauthorization.UIAdapter.FriendsAdapter;
 import nodopezzz.android.vkauthorization.VK.VKApi;
 import retrofit2.Call;
 import retrofit2.Callback;

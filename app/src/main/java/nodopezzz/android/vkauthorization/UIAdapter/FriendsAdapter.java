@@ -1,4 +1,4 @@
-package nodopezzz.android.vkauthorization;
+package nodopezzz.android.vkauthorization.UIAdapter;
 
 import android.content.Context;
 import android.os.Handler;
@@ -14,6 +14,8 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import nodopezzz.android.vkauthorization.Models.UsersContainer;
+import nodopezzz.android.vkauthorization.Network.ThumbnailDownloader;
+import nodopezzz.android.vkauthorization.R;
 
 public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.FriendHolder> {
     private static final String TAG = "FriendAdapter";
