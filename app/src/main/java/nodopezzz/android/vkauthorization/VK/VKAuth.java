@@ -10,6 +10,7 @@ public class VKAuth {
 
     public static String createAuthorizationUrl(String ... scopes){
         //Подготовка url для получения токена
+        ///
         Uri uri = ENDPOINT.buildUpon()
                 .appendQueryParameter("client_id", BuildConfig.CLIENT_ID)
                 .appendQueryParameter("display", "mobile")
